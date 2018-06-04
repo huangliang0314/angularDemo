@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <meta charset="utf-8"></meta>
+	  <title>nodejs/npm相关</title>
+	  <style>
+	  p{
+	     text-indent:25px;
+		 letter-spacing:1px;
+	  }
+	  
+	  *{
+	   font-family:"宋体","Times New Roman",Georgia;
+	  }
+	  
+	  table,td{
+	     border:1px solid #000000;
+	  }
+	  
+	  footer{
+	    float:right;
+	  }
+	  </style>
+  </head>
+  <body>
+	  <h1>nodejs/npm</h1>
+	  <div>
+		<h2>1.1 nodejs简介</h2>
+		<p>
+		 脚本语言需要一个解析器才能运行，JavaScript是脚本语言，在不同的位置有不一样的解析器，如写入html的js语言，浏览器是它的解析器角色。
+		 而对于需要独立运行的JS，nodejs就是一个解析器。
+		</p>
+		<p>
+		 每一种解析器都是一个运行环境，不但允许js定义各种数据结构，进行各种计算，
+		 还允许js使用允许环境提供的内置对象和方法做一些事情。如运行在浏览器中的js的用途是操作DOM，浏览器就提供了document之类的内置对象。
+		 而运行在nodejs中的js的用途是操作磁盘文件或搭建http服务器，nodejs就相应提供了fs,http等内置对象。
+		</p>
+		<p>
+		    并且node有两大特点：
+			<br/>
+	　　	1、基于事件驱动；
+			<br/>
+	　　	2、无阻塞。
+			<br/>
+			&nbsp从而nodeJS非常适合处理并发请求,可以实现高性能Web服务器。
+		</p>
+		<p>
+		</p>
+	  </div> 
+	  <div>
+	     <h2>1.2 npm简介</h2>
+		 <div>NPM（node package manager），通常称为node包管理器。等同于visual studio中的Nuget</div>
+		 <h3>1.2.1 npm能做什么？</h3>
+         <pre>
+			npm的安装、卸载、升级、配置
+			npm的使用：package的安装、卸载、升级、查看、搜索、发布
+			npm包的安装模式：本地 vs 全局
+			package.json：包描述信息
+			package版本：常见版本声明形式
+		</pre>
+		<h2>1.2 node/npm安装</h2>
+		 
+		 <div>nodejs官网下载对应安装版本，安装即可</div>
+		 <img src="./Images/nodejs.png"></img>
+		<h3>1.2.2 npm包的安装模式：本地 vs 全局</h3>
+		<p>
+			<ul contenteditable="true">
+		　　　　<li>本地安装：package会被下载到当前所在目录，也只能在当前目录下使用。
+					<br/>
+		            命令： npm install pkg
+				</li>
+		　　　　<li>全局安装：package会被下载到到特定的系统目录下，安装的package能够在所有目录下使用。
+					<br/>
+		            命令： npm install -g pkg
+				</li>
+	　　	</ul>
+			<div>
+			   什么时候用本地／全局安装？
+			   <ul contenteditable="true">
+			　　　　<li>当你试图安装命令行工具的时候，例如 angular/cli的时候，使用全局安装
+					</li>
+			　　　　<li>当你试图通过npm安装某个模块时，使用本地安装
+					</li>
+	　　		</ul>
+			</div>
+		</p>
+		<h3>1.2.3 npm常用命令</h3>
+		<div>
+			<table>
+				<caption>npm常用命令</caption>
+				<th>
+				  <tr>
+				    <td><strong>命令</strong></td><td><strong>作用</strong></td><td><strong>备注</strong></td>
+				  </tr>
+				</th>
+				<tbody>
+				  <tr>
+				    <td> npm install [-g] <name> [-save-dev]</td>
+					<td>安装第三方库包</td>
+					<td>
+					  <div>npm install @angular/cli<br/>
+					  本地安装最新版本的angular/cli
+					  </div>
+					  <div>npm install -g @angular/cli<br/>
+					  全局安装最新版本的angular/cli
+					  </div>
+					  <div>npm install @angular/cli@""<br/>
+					  安装指定版本的angular/cli
+					  </div>
+					  <div>npm install @angular/cli --save<br/>
+					  将保存配置信息到package.json（package.json是nodejs的配置文件）.
+					  </div>
+					  <div>npm install @angular/cli --save-dev<br/>
+					  保存至package.json的devDependencies节点，不指定-dev将保存至dependencies节点；
+					  </div>
+					</td>
+				  </tr>
+				  <tr>
+				    <td> npm update  <name>  [-g]  [-save-dev]</td>
+					<td>更新指定库包</td>
+					<td>
+					
+					</td>
+				  </tr>
+				  <tr>
+				    <td> npm install</td>
+					<td>通过package.json进行安装</td>
+					<td>
+					 如果我们的项目依赖了很多package，一个一个地安装那将是个体力活。
+					 <br/>
+					 我们可以将项目依赖的包都在package.json这个文件里声明，然后一行命令搞定
+					</td>
+				  </tr>
+				  
+				  <tr>
+				    <td> npm uninstall  <name>  [-g]  [-save-dev]</td>
+					<td>卸载指定第三方库包</td>
+					<td>
+					 
+					</td>
+				  </tr>
+				   <tr>
+				    <td> npm root [-g] </td>
+					<td>npm根目录；-g是全局根目录</td>
+					<td>
+					 
+					</td>
+				  </tr>
+				   <tr>
+				    <td>npm install --help</td>
+					<td>列出所有 npm install 可能的参数形式</td>
+					<td></td>
+				  </tr>
+				</tbody>
+			</table>
+		</div>
+	  </div>
+  </body>
+  <footer>
+      <a href="#"><h1>安装angular/cli    typescript</h1></a>
+  </footer>
+</html>
